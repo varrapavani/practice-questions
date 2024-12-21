@@ -215,13 +215,13 @@ const filterUsersByPostComments = function (users, minComments) { };
 const filterUsersByPostCategory = function (users, category) { };
 
 // Filter users who have a certain number of followers and have posted in the last 30 days [{user: {name: "Tom", followers: 1000, lastPostDate: "2024-11-10"}}] => [{user: {name: "Tom", followers: 1000, lastPostDate: "2024-11-10"}}]
-const filterActiveUsers = function (users, minFollowers, daysAgo) { };
+const filterRecentlyActiveUsers = function (users, minFollowers, daysAgo) { };
 
 // Filter posts that have at least one hashtag from a list of trending hashtags [{post: {title: "Post 1", hashtags: ["#food", "#vegan"]}}] => [{post: {title: "Post 1", hashtags: ["#food", "#vegan"]}}]
 const filterPostsByHashtags = function (posts, trendingHashtags) { };
 
 // Filter users who have shared at least one post that received a specific number of likes [{user: {name: "Lucy", posts: [{title: "Post 1", likes: 500}, {title: "Post 2", likes: 100}]}}] => [{user: {name: "Lucy", posts: [{title: "Post 1", likes: 500}, {title: "Post 2", likes: 100}]}}]
-const filterUsersByPostLikes = function (users, minLikes) { };
+const filterUsersByMinPostLikes = function (users, minLikes) { };
 
 // Filter posts that have a certain number of comments and are from a specific location [{post: {title: "Post 1", comments: 150, location: "Paris"}}] => [{post: {title: "Post 1", comments: 150, location: "Paris"}}]
 const filterPostsByCommentsAndLocation = function (posts, minComments, location) { };
