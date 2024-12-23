@@ -165,8 +165,10 @@ const withoutVowelsOf = function (strings) {
 // Example: cumulative sum of [1, 2, 3] is [1, 1+2, 1+2+3]
 const cumulativeSum = function (array) {
   let sum = 0;
+
   return array.map(function (number) {
-    return sum += number;
+    sum += number;
+    return sum;
   });
 }
 
