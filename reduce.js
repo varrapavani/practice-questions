@@ -1,44 +1,142 @@
 // sumOf([1, 2, 3, 4]) => 10
-const sumOf = function (numbers) { }
+const sum = function (total, number) {
+  return total + number;
+}
+
+const sumOf = function (numbers) {
+  return numbers.reduce(sum, 0);
+}
+
 
 // productOf([1, 2, 3, 4]) => 24
-const productOf = function (numbers) { }
+const multiply = function (product, multiplier) {
+  return product * multiplier;
+}
+
+const productOf = function (numbers) {
+  return numbers.reduce(multiply, 1);
+}
 
 // averageOf([1, 2, 3, 4, 5]) => 3
-const averageOf = function (numbers) { }
+const averageOf = function (numbers) {
+  const total = numbers.reduce(sum, 0);
+  return Math.floor(total / numbers.length);
+}
 
 // minOf([3, 1, 4, 1, 5, 9, 2]) => 1
-const minOf = function (numbers) { }
+const minimum = function (a, b) {
+  return a < b ? a : b;
+}
+
+const minOf = function (numbers) {
+  return numbers.reduce(minimum, Infinity);
+}
 
 // maxOf([3, 1, 4, 1, 5, 9, 2]) => 9
-const maxOf = function (numbers) { }
+const maximum = function (a, b) {
+  return a > b ? a : b;
+}
+
+const maxOf = function (numbers) {
+  return numbers.reduce(maximum, -Infinity);
+}
 
 // sumPositiveNumbers([1, -2, 3, -4]) => 4
-const sumPositiveNumbers = function (numbers) { }
+const isPositive = function (number) {
+  return number > 0;
+}
+
+const sumOfPositives = function (sum, number) {
+  return isPositive(number) ? sum + number : sum;
+}
+
+const sumPositiveNumbers = function (numbers) {
+  return numbers.reduce(sumOfPositives, 0);
+}
 
 // sumOfSquares([1, 2, 3, 4]) => 30
-const sumOfSquares = function (numbers) { }
+const squareOf = function (number) {
+  return Math.pow(number, 2);
+}
+
+const sumOfSquares = function (numbers) {
+  return numbers.map(squareOf).reduce(sum, 0);
+}
+
 
 // sumOfOddNumbers([1, 2, 3, 4, 5]) => 9
-const sumOfOddNumbers = function (numbers) { }
+const isOdd = function (number) {
+  return number % 2 !== 0;
+}
+
+const sumOfOddNumbers = function (numbers) {
+  return numbers.filter(isOdd).reduce(sum, 0);
+}
 
 // countNegativeNumbers([1, -2, 3, -4]) => 2
-const countNegativeNumbers = function (numbers) { }
+const count = function (total, number) {
+  return isPositive(number) ? total : total + 1;
+}
+
+const countNegativeNumbers = function (numbers) {
+  return numbers.reduce(count, 0);
+}
+
 
 // findSumOfEvenSquares([1, 2, 3, 4]) => 20
-const findSumOfEvenSquares = function (numbers) { }
+const isEven = function (number) {
+  return number % 2 === 0;
+}
+
+const findSumOfEvenSquares = function (numbers) {
+  return numbers.filter(isEven).map(squareOf).reduce(sum, 0);
+}
 
 // concatenateWords(["hello", "world"]) => "helloworld"
-const concatenateWords = function (words) { }
+const concate = function (word, string) {
+  return word.concat(string);
+}
 
+const concatenateWords = function (words) {
+  return words.reduce(concate, '');
+}
 // longestWord(["apple", "banana", "cherry", "kiwi"]) => "banana"
-const longestWord = function (words) { }
+const invert = function (f) {
+  return function (...args) {
+    return !f(...args)
+  }
+}
+
+const largestString = function (string1, string2) {
+  return string1.length > string2.length;
+}
+
+const longestWord = function (words) {
+  const getLargestString = invert(largestString);
+
+  return words.reduce(function (longestString, string) {
+    return !getLargestString(longestString, string) ? longestString : string;
+  });
+}
 
 // shortestWord(["apple", "banana", "cherry", "kiwi"]) => "kiwi"
-const shortestWord = function (words) { }
+const shortestWord = function (words) {
+  const getShortestString = invert(largestString);
+
+  return words.reduce(function (shortestString, string) {
+    return getShortestString(shortestString, string) ? shortestString : string;
+  });
+}
+
 
 // joinWithComma(["apple", "banana", "cherry"]) => "apple,banana,cherry"
-const joinWithComma = function (words) { }
+const join = function (joinedString, word) {
+  return joinedString.concat(',', word);
+}
+
+const joinWithComma = function (words) {
+  return words.reduce(join);
+}
 
 // reverseWords(["hello", "world"]) => "world hello"
 const reverseWords = function (words) { }
